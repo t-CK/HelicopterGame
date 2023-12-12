@@ -41,6 +41,7 @@ int main()
 		return -1;
 	}
 	std::cout << "Initialized glad" << std::endl;
+	glViewport(0, 0, 800, 600);
 
 	float vertecies[] = {
 		 0.0f,  0.5f, 0.0f, // Top
