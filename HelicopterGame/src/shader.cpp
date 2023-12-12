@@ -101,4 +101,5 @@ std::string Shader::ReadFile(std::string& filePath) const
 
 Shader::~Shader()
 {
+	glDeleteProgram(m_ID);
 }
