@@ -1,3 +1,5 @@
+// Project
+#include "Shader.h"
 // OpenGL
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -66,74 +68,7 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	// SHADERS
-
-	std::ifstream shaderStream;
-	std::stringstream vshaderString, fshaderString;
-	std::string line;
-
-	shaderStream.std::ifstream::open("assets/vertex.glsl");
-	while (std::getline(shaderStream, line))
-	{
-		vshaderString << line << '\n';
-	}
-	std::string tmp = vshaderString.str();
-	const char* vertexSrc = tmp.c_str();
-	shaderStream.close();
-
-	uint32_t fragmentShader, vertexShader, shaderProgram;
-	vertexShader =  glCreateShader(GL_VERTEX_SHADER);
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-	glShaderSource(vertexShader, 1, &vertexSrc, NULL);
-	glCompileShader(vertexShader);
-	
-	int status;
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
-	if (!status)
-	{
-		char infolog[512];
-		glGetShaderInfoLog(vertexShader, 512, NULL, infolog);
-		std::cout << "FAILED TO COMPILE SHADER : VERTEX\n" << infolog << std::endl;
-	}
-
-	shaderStream.std::ifstream::open("assets/fragment.glsl");
-	while (std::getline(shaderStream, line))
-	{
-		fshaderString << line << '\n';
-	}
-	tmp = fshaderString.str();
-	const char* fragmentSrc = tmp.c_str();
-	shaderStream.close();
-
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentSrc, 0);
-	glCompileShader(fragmentShader);
-
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &status);
-	if (!status)
-	{
-		char infolog[512];
-		glGetShaderInfoLog(fragmentShader, 512, NULL, infolog);
-		std::cout << "FAILED TO COMPILE SHADER : FRAGMENT\n" << infolog << std::endl;
-	}
-
-
-	shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-	
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &status);
-	if (!status)
-	{
-		char infolog[512];
-		glGetProgramInfoLog(shaderProgram, 512, NULL, infolog);
-		std::cout << "FAILED TO LINK PROGRAM:\n" << infolog << std::endl;
-	}
+	Shader shader("assets/vertex.glsl", "assets/fragment.glsl");
 
 
 	// Game loop
@@ -142,7 +77,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
 
-		glUseProgram(shaderProgram);
+		shader.Bind();
 		glBindVertexArray(vao);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (const void*)0);
 		glEnableVertexAttribArray(0);
