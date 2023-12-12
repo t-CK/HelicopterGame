@@ -4,21 +4,9 @@
 // STL
 #include <iostream>
 #include <cstdint>
+#include <sstream>
+#include <fstream>
 
-const char* vertexSrc =
-"#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"void main()\n"
-"{\n"
-"gl_Position = vec4(aPos, 1.0f);\n"
-"}\0";
-const char* fragmentSrc =
-"#version 330 core\n"
-"out vec4 fragColor;\n"
-"void main()\n"
-"{\n"
-"fragColor = vec4(1.0, 0.5, 1.0, 1.0);\n"
-"}\0";
 
 int main()
 {
@@ -80,6 +68,19 @@ int main()
 
 	// SHADERS
 
+	std::ifstream shaderStream;
+	std::stringstream vshaderString, fshaderString;
+	std::string line;
+
+	shaderStream.std::ifstream::open("assets/vertex.glsl");
+	while (std::getline(shaderStream, line))
+	{
+		vshaderString << line << '\n';
+	}
+	std::string tmp = vshaderString.str();
+	const char* vertexSrc = tmp.c_str();
+	shaderStream.close();
+
 	uint32_t fragmentShader, vertexShader, shaderProgram;
 	vertexShader =  glCreateShader(GL_VERTEX_SHADER);
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -95,6 +96,15 @@ int main()
 		glGetShaderInfoLog(vertexShader, 512, NULL, infolog);
 		std::cout << "FAILED TO COMPILE SHADER : VERTEX\n" << infolog << std::endl;
 	}
+
+	shaderStream.std::ifstream::open("assets/fragment.glsl");
+	while (std::getline(shaderStream, line))
+	{
+		fshaderString << line << '\n';
+	}
+	tmp = fshaderString.str();
+	const char* fragmentSrc = tmp.c_str();
+	shaderStream.close();
 
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentSrc, 0);
