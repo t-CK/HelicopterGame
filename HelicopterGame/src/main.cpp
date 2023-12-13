@@ -1,6 +1,7 @@
 // Project
 #include "Shader.h"
 #include "VAO.h"
+#include "VBO.h"
 // OpenGL
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -19,7 +20,7 @@ int main()
 		return -1;
 	}
 	std::cout << "Initialized glfw" << std::endl;
-
+	
 	// Set glfw context to openGL 3.3 Core profile
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -53,23 +54,20 @@ int main()
 		0, 1, 2
 	};
 
-	uint32_t vbo, ebo;
-
-	glGenBuffers(1, &vbo);
-	glGenBuffers(1, &ebo);
+	uint32_t ebo;
 
 	VAO vao;
+	VBO vbo;
+
+	glGenBuffers(1, &ebo);
 
 	vao.Bind();
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertecies), vertecies, GL_STATIC_DRAW);
+	vbo.Bind();
+	vbo.AddData();
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
 
 	Shader shader("assets/vertex.glsl", "assets/fragment.glsl");
 

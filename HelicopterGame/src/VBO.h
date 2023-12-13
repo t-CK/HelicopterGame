@@ -1,15 +1,19 @@
 #include <cstdint>
+#include <vector>
 
-class VAO
+class VBO
 {
 public:
+	VBO();
+
 	// At the moment all vao objects have fixed amount of vertecies since we do not need more complex meshes
-	VAO();
+	void AddData() const;
 
-	void Bind();
-	void UnBind();
+	void Bind() const;
+	void UnBind() const;
 
-	~VAO();
+	~VBO();
+
 private:
 	uint32_t m_ID;
 };
