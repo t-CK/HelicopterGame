@@ -2,6 +2,7 @@
 #include "Shader.h"
 #include "VAO.h"
 #include "VBO.h"
+#include "EBO.h"
 // OpenGL
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -45,29 +46,17 @@ int main()
 	std::cout << "Initialized glad" << std::endl;
 	glViewport(0, 0, 800, 600);
 
-	float vertecies[] = {
-		 0.0f,  0.5f, 0.0f, // Top
-		-0.5f, -0.5f, 0.0f,	// Bottom left
-		 0.5f, -0.5f, 0.0f  // Bottom right
-	};
-	unsigned int indecies[] = {
-		0, 1, 2
-	};
-
-	uint32_t ebo;
-
 	VAO vao;
 	VBO vbo;
-
-	glGenBuffers(1, &ebo);
+	EBO ebo;
 
 	vao.Bind();
 
 	vbo.Bind();
 	vbo.AddData();
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
+	ebo.Bind();
+	ebo.AddBuffer();
 
 	Shader shader("assets/vertex.glsl", "assets/fragment.glsl");
 
@@ -82,7 +71,7 @@ int main()
 		vao.Bind();
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (const void*)0);
 		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+		ebo.Bind();
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
