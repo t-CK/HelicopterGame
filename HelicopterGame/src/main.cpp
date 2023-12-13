@@ -26,6 +26,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_CORE_PROFILE, GLFW_OPENGL_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	// Create window and set context to it
 	GLFWwindow* window = glfwCreateWindow(800, 600, "Helicopter Game", NULL, NULL);
@@ -45,6 +46,7 @@ int main()
 	}
 	std::cout << "Initialized glad" << std::endl;
 	glViewport(0, 0, 800, 600);
+
 
 	VAO vao;
 	VBO vbo;
