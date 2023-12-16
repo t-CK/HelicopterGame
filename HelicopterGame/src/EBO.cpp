@@ -10,7 +10,9 @@ EBO::EBO()
 void EBO::AddBuffer() const
 {
 	unsigned int indecies[] = {
-		0, 1, 2
+		0, 1, 2,
+		2, 3, 0
+
 	};
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);

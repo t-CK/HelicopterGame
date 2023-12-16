@@ -71,10 +71,12 @@ int main()
 
 		shader.Bind();
 		vao.Bind();
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (const void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)0);
 		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
 		ebo.Bind();
-		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
 	}

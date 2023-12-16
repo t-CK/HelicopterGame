@@ -14,15 +14,19 @@ void VBO::AddData() const
 
 	// Create array of  vertecies
 	float vert[] = {
-		 0.0f,  0.5f, 0.0f, // Top
-		-0.5f, -0.5f, 0.0f,	// Bottom left
-		 0.5f, -0.5f, 0.0f  // Bottom right
+		// Vertex pos		Color
+		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f, // Top right
+		-0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // Top left
+		-0.5f, -0.5f, 0.0f,	0.0f, 1.0f, 0.0f, // Bottom left
+		 0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f  // Bottom right
 	};
 	
 	// Add data to buffer and set vertex attributes
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, sizeof(vert), GL_FLOAT, GL_FALSE, sizeof(vert), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 }
 
 void VBO::Bind() const
