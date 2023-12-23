@@ -60,7 +60,7 @@ int main()
 	ebo.Bind();
 	ebo.AddBuffer();
 
-	Shader shader("assets/vertex.glsl", "assets/fragment.glsl");
+	Shader shader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
 
 
 	// Game loop
