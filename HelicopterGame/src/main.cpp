@@ -65,29 +65,8 @@ int main()
 	Shader shader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
 
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SOURCE0_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//
-//	unsigned int texture;
-//	glGenTextures(1, &texture);
-//	glBindTexture(GL_TEXTURE_2D, texture);
-//
-//	int width, height, nChannels;
-//	unsigned char* data = stbi_load("assets/sprites/bunnysheet5.png", &width, &height, &nChannels, STBI_rgb_alpha);
-//
-//	if (data)
-//	{
-//		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-//		glGenerateMipmap(GL_TEXTURE_2D);
-//	}
-//	else
-//		std::cout << "Failed to load texture" << std::endl;
-//
-//	stbi_image_free(data);
 	Texture texture("assets/sprites/ScreenChopper.png");
 	texture.Bind();
 
