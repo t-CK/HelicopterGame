@@ -11,6 +11,10 @@ public:
 	// Unbind shader
 	void UnBind();
 
+	// Set uniform values
+
+	void SetInt(const std::string& name, int value);
+
 	~Shader();
 
 private:

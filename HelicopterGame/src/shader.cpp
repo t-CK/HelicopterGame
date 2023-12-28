@@ -84,6 +84,11 @@ void Shader::UnBind()
 	glUseProgram(0);
 }
 
+void Shader::SetInt(const std::string& name, int value)
+{
+	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), value);
+}
+
 std::string Shader::ReadFile(std::string& filePath) const
 {
 	std::ifstream fileStream;
