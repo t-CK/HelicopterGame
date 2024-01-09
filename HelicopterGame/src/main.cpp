@@ -76,7 +76,6 @@ int main()
 
 	shader.SetInt("tex", 0);
 
-
 	glClearColor(0.5f, 0.2f, 0.4f, 1.0f);
 	// Game loop
 	while (!glfwWindowShouldClose(window))
@@ -92,7 +91,7 @@ int main()
 		glm::mat4 u_View = glm::mat4(1.0f);
 		u_View = glm::translate(u_View, glm::vec3(0.0f, 0.0f, -3.0f));
 		glm::mat4 u_Projection;
-		u_Projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+		u_Projection = glm::perspective(glm::radians(90.f), 800.0f / 600.0f, 0.1f, 100.0f);
 
 		// Submit transformations to shader
 		shader.SetMat4("u_Model", u_Model);
