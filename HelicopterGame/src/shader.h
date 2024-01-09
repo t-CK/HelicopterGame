@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <string>
+#include <glm/glm.hpp>
 
 class Shader
 {
@@ -14,6 +15,7 @@ public:
 	// Set uniform values
 
 	void SetInt(const std::string& name, int value);
+	void SetMat4(const std::string& name, glm::mat4 mat);
 
 	~Shader();
 

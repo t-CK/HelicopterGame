@@ -8,6 +8,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stb-image/stb_image.h>
+// glm
+#include <glm/glm.hpp>
 // STL
 #include <iostream>
 #include <cstdint>
@@ -83,6 +85,13 @@ int main()
 		shader.Bind();
 		vao.Bind();
 
+		glm::mat4 u_Model = glm::mat4(1.0f);
+		glm::mat4 u_View = glm::mat4(1.0f);
+		glm::mat4 u_Projection = glm::mat4(1.0f);
+		shader.SetMat4("u_Model", u_Model);
+		shader.SetMat4("u_View", u_View);
+		shader.SetMat4("u_Projection", u_Projection);
+	
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)0);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)(3 * sizeof(float)));
