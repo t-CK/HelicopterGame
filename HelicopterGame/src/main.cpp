@@ -10,6 +10,8 @@
 #include <stb-image/stb_image.h>
 // glm
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 // STL
 #include <iostream>
 #include <cstdint>
@@ -79,15 +81,20 @@ int main()
 	// Game loop
 	while (!glfwWindowShouldClose(window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glfwPollEvents();
 
 		shader.Bind();
 		vao.Bind();
 
+		// Set transformations
 		glm::mat4 u_Model = glm::mat4(1.0f);
 		glm::mat4 u_View = glm::mat4(1.0f);
-		glm::mat4 u_Projection = glm::mat4(1.0f);
+		u_View = glm::translate(u_View, glm::vec3(0.0f, 0.0f, -3.0f));
+		glm::mat4 u_Projection;
+		u_Projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+		// Submit transformations to shader
 		shader.SetMat4("u_Model", u_Model);
 		shader.SetMat4("u_View", u_View);
 		shader.SetMat4("u_Projection", u_Projection);
