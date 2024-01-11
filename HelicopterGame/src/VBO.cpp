@@ -1,5 +1,6 @@
-#include "VBO.h"
 #include <glad/glad.h>
+#include "VBO.h"
+#include "VertexBufferLayaut.h"
 
 VBO::VBO()
 {
@@ -8,7 +9,7 @@ VBO::VBO()
 	Bind();
 }
 
-void VBO::AddData() const
+void VBO::AddData(VertexBufferLayout& layout) const
 {
 	// At the time we only need uniform sized meshes, so vertex count can be fixed
 
@@ -24,12 +25,15 @@ void VBO::AddData() const
 	
 	// Add data to buffer and set vertex attributes
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+
+	// Submit data in layout into openGL
+	for (size_t i{}; i < layout.Elements.size(); i++)
+	{
+		glVertexAttribPointer(i, layout.Elements[i]->count, layout.Elements[i]->type,
+			layout.Elements[i]->normalized, layout.Stride, (void*)layout.Elements[i]->offset);
+		glEnableVertexAttribArray(i);
+	}
+
 }
 
 void VBO::Bind() const
