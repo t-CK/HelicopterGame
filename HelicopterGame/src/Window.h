@@ -1,6 +1,6 @@
 
 
-class GLFWwindow;
+struct GLFWwindow;
 
 // A Class to handle window related functionality
 // Handels glfw and glad initializion and cleanup
@@ -21,5 +21,5 @@ public:
 
 	~Window();
 private:
-	GLFWwindow* m_Wnd;
+	GLFWwindow* m_Wnd = nullptr;
 };
