@@ -1,13 +1,7 @@
-// Project
-#include "Texture.h"
-#include "Shader.h"
-#include "VAO.h"
-#include "VBO.h"
-#include "EBO.h"
 // OpenGL
+#include <stb-image/stb_image.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <stb-image/stb_image.h>
 // glm
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -17,42 +11,22 @@
 #include <cstdint>
 #include <sstream>
 #include <fstream>
+// Project
+#include "Texture.h"
+#include "Shader.h"
+#include "VAO.h"
+#include "VBO.h"
+#include "EBO.h"
+#include "Window.h"
+#include "VertexBufferLayout.h"
+
+
 
 
 int main()
 {
-	if (!glfwInit())
-	{
-		std::cout << "FATAL : Failed to initialize glfw" << std::endl;
-		return -1;
-	}
-	std::cout << "Initialized glfw" << std::endl;
-	
-	// Set glfw context to openGL 3.3 Core profile
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_CORE_PROFILE, GLFW_OPENGL_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-	// Create window and set context to it
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Helicopter Game", NULL, NULL);
-	if (!window)
-	{
-		const char* msg;
-		glfwGetError(&msg);
-		std::cout << "Failed to create window:\n\t" << msg << std::endl;
-	}
-	glfwMakeContextCurrent(window);
-
-	// Initialize glad
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "FATAL : failed to load gald" << std::endl;
-		return -1;
-	}
-	std::cout << "Initialized glad" << std::endl;
-	glViewport(0, 0, 800, 600);
-
+	Window* window = new Window;
+	window->Init();
 
 	VAO vao;
 	VBO vbo;
@@ -60,16 +34,18 @@ int main()
 
 	vao.Bind();
 
+	VertexBufferLayout layout;
+	layout.PushFloat(3, false);
+	layout.PushFloat(3, false);
+	layout.PushFloat(2, false);
+
 	vbo.Bind();
-	vbo.AddData();
+	vbo.AddData(layout);
 
 	ebo.Bind();
 	ebo.AddBuffer();
 
 	Shader shader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	Texture texture("assets/sprites/ScreenChopper.png");
 	texture.Bind();
@@ -78,7 +54,7 @@ int main()
 
 	glClearColor(0.5f, 0.2f, 0.4f, 1.0f);
 	// Game loop
-	while (!glfwWindowShouldClose(window))
+	while (!window->GetClosed())
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glfwPollEvents();
@@ -110,8 +86,10 @@ int main()
 
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(window->GetNativeWindow());
 	}
+
+	delete window;
 
 	return 0;
 }
