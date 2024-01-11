@@ -1,6 +1,6 @@
 #include <glad/glad.h>
 #include "VBO.h"
-#include "VertexBufferLayaut.h"
+#include "VertexBufferLayout.h"
 
 VBO::VBO()
 {
