@@ -12,8 +12,8 @@ public:
 
 	// Initialize glad and glfw,
 	// create GLFWwindow and set the viewport
-	// Returns 0 on success
-	int Init();
+	// Returns true on success
+	bool Init();
 	void Update();
 	bool GetClosed();
 

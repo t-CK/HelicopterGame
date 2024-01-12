@@ -26,7 +26,8 @@
 int main()
 {
 	Window* window = new Window;
-	window->Init();
+	if (!window->Init())
+		return -1;
 
 	VAO vao;
 	VBO vbo;

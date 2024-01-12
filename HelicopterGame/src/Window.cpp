@@ -3,12 +3,12 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-int Window::Init()
+bool Window::Init()
 {
 	if (!glfwInit())
 	{
 		std::cout << "FATAL : Failed to initialize glfw" << std::endl;
-		return -1;
+		return false;
 	}
 	std::cout << "Initialized glfw" << std::endl;
 
@@ -25,6 +25,7 @@ int Window::Init()
 		const char* msg;
 		glfwGetError(&msg);
 		std::cout << "Failed to create window:\n\t" << msg << std::endl;
+		return false;
 	}
 	glfwMakeContextCurrent(m_Wnd);
 
@@ -32,7 +33,7 @@ int Window::Init()
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "FATAL : failed to load gald" << std::endl;
-		return -1;
+		return false;
 	}
 	std::cout << "Initialized glad" << std::endl;
 	glViewport(0, 0, 800, 600);
@@ -40,7 +41,7 @@ int Window::Init()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	return 1;
+	return true;
 }
 
 void Window::Update()
