@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <vector>
 #include <GLFW/glfw3.h>
+#include <iostream>
 
 struct VertexBufferElement
 {
@@ -9,7 +10,8 @@ struct VertexBufferElement
 		type = dataType;
 		count = dataCount;
 		normalized = dataNormalized;
-		offset = dataOffset * GetSizeOfType();
+		offset = dataOffset;
+		std::cout << offset << std::endl;
 	}
 
 	size_t GetSizeOfType()
@@ -35,32 +37,41 @@ class VertexBufferLayout
 public:
 
 	inline void PushInt(int count, bool normalized)
-	{ 
-		Elements.push_back(new VertexBufferElement(GL_INT, count, normalized, Elements.size())); 
+	{
+		Elements.push_back(new VertexBufferElement(GL_INT, count, normalized, m_Offset));
 		Stride += count * sizeof(int); 
+		m_Offset += count * 4;
 	}
 
 	inline void PushUInt(int count, bool normalized)
 	{
-		Elements.push_back(new VertexBufferElement(GL_UNSIGNED_INT, count, normalized, Elements.size()));
-		Stride += count * sizeof(unsigned int); 
+		Elements.push_back(new VertexBufferElement(GL_UNSIGNED_INT, count, normalized, m_Offset));
+		Stride += count * sizeof(unsigned int);
+		m_Offset += count * 4;
 	}
 
 	inline void PushFloat(unsigned int count, bool normalized)
 	{
-		Elements.push_back(new VertexBufferElement(GL_FLOAT, count, normalized, Elements.size())); Stride += count * sizeof(float);
+		int offset = 0;
+		for (auto i : Elements)
+			offset += i->count * i->GetSizeOfType();
+		Elements.push_back(new VertexBufferElement(GL_FLOAT, count, normalized, m_Offset));
+		Stride += count * sizeof(float);
+		m_Offset += count * 4;
 	}
 
 	inline void PushChar(unsigned int count, bool normalized)
 	{
-		Elements.push_back(new VertexBufferElement(GL_BYTE, count, normalized, Elements.size()));
+		Elements.push_back(new VertexBufferElement(GL_BYTE, count, normalized, m_Offset));
 		Stride += count * sizeof(char);
+		m_Offset += count * 1;
 	}
 
 	inline void PushUChar(unsigned int count, bool normalized)
 	{
-		Elements.push_back(new VertexBufferElement(GL_UNSIGNED_BYTE, count, normalized, Elements.size()));
+		Elements.push_back(new VertexBufferElement(GL_UNSIGNED_BYTE, count, normalized, m_Offset));
 		Stride += count * sizeof(unsigned char);
+		m_Offset += count * 1;
 	}
 
 	inline ~VertexBufferLayout() 
@@ -71,4 +82,7 @@ public:
 
 	std::vector<VertexBufferElement*> Elements;
 	unsigned int Stride = 0;
+
+private:
+	size_t m_Offset;
 };
