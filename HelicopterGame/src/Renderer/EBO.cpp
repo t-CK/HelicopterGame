@@ -1,5 +1,8 @@
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "EBO.h"
 #include <glad/glad.h>
+#include <string>
 
 EBO::EBO()
 {
@@ -7,7 +10,7 @@ EBO::EBO()
 	Bind();
 }
 
-void EBO::AddBuffer() const
+void EBO::AddBuffer()
 {
 	unsigned int indecies[] = {
 		0, 1, 2,
@@ -16,6 +19,8 @@ void EBO::AddBuffer() const
 	};
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
+
+	m_Count += std::size(indecies);
 }
 
 void EBO::Bind() const

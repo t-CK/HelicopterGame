@@ -15,7 +15,7 @@ public:
 		m_Window(wnd) { }
 
 	static void BeginScene();
-	static void Submit(class VertexBufferLayout&, class VAO&, class VBO&, class EBO&, class Shader&, class Texture&);
+	static void Submit(class VertexBufferLayout&, class VAO&, class VBO&);
 	static void RenderObject();
 
 	void EndScene(class EBO&);
