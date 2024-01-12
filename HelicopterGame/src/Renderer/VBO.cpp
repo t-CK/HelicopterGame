@@ -9,8 +9,9 @@ VBO::VBO()
 	Bind();
 }
 
-void VBO::AddData(VertexBufferLayout& layout) const
+void VBO::AddData(VertexBufferLayout& layout)
 {
+	m_Layout = &layout;
 	// At the time we only need uniform sized meshes, so vertex count can be fixed
 
 	// Create array of  vertecies
