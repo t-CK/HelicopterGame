@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "Window.h"
+#include "../Window.h"
 
 
 void Renderer::BeginScene()

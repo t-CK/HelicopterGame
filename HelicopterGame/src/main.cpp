@@ -12,13 +12,13 @@
 #include <sstream>
 #include <fstream>
 // Project
-#include "Texture.h"
-#include "Shader.h"
-#include "VAO.h"
-#include "VBO.h"
-#include "EBO.h"
+#include "Renderer/Texture.h"
+#include "Renderer/Shader.h"
+#include "Renderer/VAO.h"
+#include "Renderer/VBO.h"
+#include "Renderer/EBO.h"
 #include "Window.h"
-#include "VertexBufferLayout.h"
+#include "Renderer/VertexBufferLayout.h"
 
 
 
