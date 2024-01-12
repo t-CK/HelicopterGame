@@ -11,7 +11,6 @@ struct VertexBufferElement
 		count = dataCount;
 		normalized = dataNormalized;
 		offset = dataOffset;
-		std::cout << offset << std::endl;
 	}
 
 	size_t GetSizeOfType()
@@ -52,9 +51,6 @@ public:
 
 	inline void PushFloat(unsigned int count, bool normalized)
 	{
-		int offset = 0;
-		for (auto i : Elements)
-			offset += i->count * i->GetSizeOfType();
 		Elements.push_back(new VertexBufferElement(GL_FLOAT, count, normalized, m_Offset));
 		Stride += count * sizeof(float);
 		m_Offset += count * 4;
