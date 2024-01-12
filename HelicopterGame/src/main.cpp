@@ -19,6 +19,7 @@
 #include "Renderer/EBO.h"
 #include "Window.h"
 #include "Renderer/VertexBufferLayout.h"
+#include "Renderer/Renderer.h"
 
 
 
@@ -52,16 +53,15 @@ int main()
 	texture.Bind();
 
 	shader.SetInt("tex", 0);
+	Renderer renderer(window);
 
 	glClearColor(0.5f, 0.2f, 0.4f, 1.0f);
 	// Game loop
 	while (!window->GetClosed())
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		renderer.BeginScene();
 		glfwPollEvents();
-
-		shader.Bind();
-		vao.Bind();
 
 		// Set transformations
 		glm::mat4 u_Model = glm::mat4(1.0f);
@@ -74,20 +74,15 @@ int main()
 		shader.SetMat4("u_Model", u_Model);
 		shader.SetMat4("u_View", u_View);
 		shader.SetMat4("u_Projection", u_Projection);
-	
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)0);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-		glEnableVertexAttribArray(2);
-		ebo.Bind();
+
+		shader.Bind();
+		renderer.Submit(layout, vao, vbo, ebo);
 
 		texture.Bind();
 
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		renderer.EndScene();
 
-		glfwSwapBuffers(window->GetNativeWindow());
+	//	glfwSwapBuffers(window->GetNativeWindow());
 	}
 
 	delete window;
