@@ -1,3 +1,6 @@
+#ifndef SHADER_H
+#define SHADER_H
+
 #include <cstdint>
 #include <string>
 #include <glm/glm.hpp>
@@ -26,3 +29,4 @@ private:
 
 	uint32_t m_ID;
 };
+#endif // !SHADER_H

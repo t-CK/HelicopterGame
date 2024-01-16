@@ -1,5 +1,8 @@
 #include <cstdint>
 #include <vector>
+#ifndef VBO_H
+#define VBO_H
+
 
 class VertexBufferLayout;
 class VBO
@@ -19,3 +22,4 @@ private:
 	uint32_t m_ID;
 	VertexBufferLayout* m_Layout = nullptr;
 };
+#endif // !VBO_H

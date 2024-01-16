@@ -1,3 +1,6 @@
+#ifndef EBO_H
+#define EBO_H
+
 #include <cstdint>
 
 class EBO
@@ -18,3 +21,4 @@ private:
 	uint32_t m_ID;
 	size_t m_Count = 0;
 };
+#endif // !EBO_H

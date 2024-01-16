@@ -1,3 +1,6 @@
+#ifndef TEXTURE_H
+#define TEXTURE_H
+
 #include <cstdint>
 #include <string>
 
@@ -16,3 +19,4 @@ private:
 	int m_Width, m_Height, m_BitsPerPixel;
 	unsigned char* m_Source;
 };
+#endif // !TEXTURE_H

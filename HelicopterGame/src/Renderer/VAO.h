@@ -1,4 +1,6 @@
 #include <cstdint>
+#ifndef VAO_H
+#define VAO_H
 
 class VAO
 {
@@ -13,3 +15,5 @@ public:
 private:
 	uint32_t m_ID;
 };
+
+#endif // !VAO_H
