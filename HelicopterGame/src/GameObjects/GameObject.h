@@ -5,6 +5,7 @@
 #include "../Renderer/EBO.h"
 #include "../Renderer/Shader.h"
 #include "../Renderer/Texture.h"
+#include "../Renderer/Renderer.h"
 
 // Base class for game objects
 class GameObject
@@ -28,4 +29,12 @@ protected:
 	glm::vec4 m_Location;
 	glm::vec4 m_Rotation;
 	glm::vec4 m_Scale;
+
+	VAO m_VAO;
+	VBO m_VBO;
+	EBO m_EBO;
+	VertexBufferLayout m_Layout;
+	Shader m_Shader;
+	Texture m_Texture;
+	static Renderer* renderer;
 };
