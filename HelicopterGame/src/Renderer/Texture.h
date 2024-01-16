@@ -5,7 +5,7 @@ class Texture
 {
 public:
 	Texture() { }
-	void Create(const std::string& filePath)
+	void Create(const std::string& filePath);
 
 	void Bind();
 	void UnBind();
