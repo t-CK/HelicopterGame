@@ -7,7 +7,7 @@
 // Vendor
 #include <glad/glad.h>
 
-Shader::Shader(std::string vertexPath, std::string fragmentPath)
+void Shader::LoadShader(std::string vertexPath, std::string fragmentPath)
 {
 	// VERTEX
 	
