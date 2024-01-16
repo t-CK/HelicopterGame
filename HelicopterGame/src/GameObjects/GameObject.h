@@ -36,5 +36,5 @@ protected:
 	VertexBufferLayout m_Layout;
 	Shader m_Shader;
 	Texture m_Texture;
-	static Renderer* renderer;
+	static Renderer* m_Renderer;
 };
