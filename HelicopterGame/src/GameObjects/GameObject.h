@@ -12,12 +12,15 @@ class GameObject
 {
 public:
 	GameObject() = default;
+	GameObject(Renderer* renderer) { }
 
 	// Virtual functions
 
 	// Update object in every frame
 	virtual void Tick(float deltaTime) = 0;
-	virtual void Render() = 0;
+
+	// Render sprite at end of the frame
+	inline void Render() { m_Renderer->Submit(m_Layout, m_VAO, m_VBO, m_EBO); }
 
 	// Getters
 
@@ -36,5 +39,5 @@ protected:
 	VertexBufferLayout m_Layout;
 	Shader m_Shader;
 	Texture m_Texture;
-	static Renderer* m_Renderer;
+	Renderer* m_Renderer;
 };
