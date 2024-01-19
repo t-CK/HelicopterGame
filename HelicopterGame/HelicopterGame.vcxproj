@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObjects\Helicopter.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Renderer\EBO.cpp" />
@@ -30,6 +31,8 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObjects\GameObject.h" />
+    <ClInclude Include="src\GameObjects\Helicopter.h" />
     <ClInclude Include="src\Renderer\EBO.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\Renderer\shader.h" />

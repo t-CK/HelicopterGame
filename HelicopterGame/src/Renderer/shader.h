@@ -1,3 +1,6 @@
+#ifndef SHADER_H
+#define SHADER_H
+
 #include <cstdint>
 #include <string>
 #include <glm/glm.hpp>
@@ -5,7 +8,8 @@
 class Shader
 {
 public:
-	Shader(std::string vertexPath, std::string fragmentPath);
+
+	void LoadShader(std::string vertexPath, std::string fragmentPath);
 
 	// Bind shader for use
 	void Bind();
@@ -25,3 +29,4 @@ private:
 
 	uint32_t m_ID;
 };
+#endif // !SHADER_H

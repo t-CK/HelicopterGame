@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-Texture::Texture(const std::string& filePath)
+void Texture::Create(const std::string& filePath)
 {
 	glGenTextures(1, &m_ID);
 	glBindTexture(GL_TEXTURE_2D, m_ID);

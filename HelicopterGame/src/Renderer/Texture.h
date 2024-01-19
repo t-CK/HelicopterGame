@@ -1,10 +1,14 @@
+#ifndef TEXTURE_H
+#define TEXTURE_H
+
 #include <cstdint>
 #include <string>
 
 class Texture
 {
 public:
-	Texture(const std::string& filePath);
+	Texture() { }
+	void Create(const std::string& filePath);
 
 	void Bind();
 	void UnBind();
@@ -15,3 +19,4 @@ private:
 	int m_Width, m_Height, m_BitsPerPixel;
 	unsigned char* m_Source;
 };
+#endif // !TEXTURE_H
