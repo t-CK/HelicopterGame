@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "../Components/StaticMeshComponent.h"
 
 class Helicopter :
 	public GameObject

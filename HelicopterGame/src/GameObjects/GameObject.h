@@ -10,6 +10,7 @@
 #include "../Renderer/Shader.h"
 #include "../Renderer/Texture.h"
 #include "../Renderer/Renderer.h"
+#include "../Components/StaticMeshComponent.h"
 
 // Base class for game objects
 class GameObject
@@ -23,8 +24,9 @@ public:
 
 	// Render sprite at end of the frame
 	inline void Render() 
-	{ 
-		m_Renderer->Submit(m_Layout, m_VAO, m_VBO, m_EBO);
+	{
+		//m_Renderer->Submit(m_Layout, m_VAO, m_VBO, m_EBO);
+		m_Mesh.Render();
 
 		// Set transformations
 		glm::mat4 u_Model = glm::mat4(1.0f);
@@ -54,12 +56,14 @@ protected:
 	glm::vec4 m_Rotation;
 	glm::vec4 m_Scale;
 
-	VAO m_VAO;
-	VBO m_VBO;
-	EBO m_EBO;
+//	VAO m_VAO;
+//	VBO m_VBO;
+//	EBO m_EBO;
 	VertexBufferLayout m_Layout;
 	Shader m_Shader;
 	Texture m_Texture;
 	Renderer* m_Renderer;
+
+	StaticMeshComponent m_Mesh;
 };
 #endif // !GAME_OBJECT_H
