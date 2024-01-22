@@ -3,12 +3,13 @@
 
 #include <cstdint>
 
+
 class EBO
 {
 public:
 	EBO();
 
-	void AddBuffer();
+	void AddBuffer(unsigned int* indexBuffer, unsigned int indexCount);
 
 	void Bind() const;
 	void UnBind() const;

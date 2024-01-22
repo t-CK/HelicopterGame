@@ -10,8 +10,14 @@ class VBO
 public:
 	VBO();
 
-	// At the moment all vao objects have fixed amount of vertecies since we do not need more complex meshes
-	void AddData(VertexBufferLayout& layout);
+	// Add data to vertex buffer
+	// Parameters:
+	// Pointer to array of float data
+	// size of element
+	//	3D position = 3;
+	//	3D position + texture coordinates = 3 + 2
+	//	etc.
+	void AddData(float* buffer, size_t bufferSize, VertexBufferLayout& layout);
 
 	void Bind() const;
 	void UnBind() const;

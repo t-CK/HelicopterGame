@@ -9,23 +9,12 @@ VBO::VBO()
 	Bind();
 }
 
-void VBO::AddData(VertexBufferLayout& layout)
+void VBO::AddData(float* buffer, size_t bufferSize, VertexBufferLayout& layout)
 {
 	m_Layout = &layout;
-	// At the time we only need uniform sized meshes, so vertex count can be fixed
-
-	// Create array of  vertecies
-	float vert[] = {
-		// Vertex pos		Color			  Texture coordinates
-		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, // Top right
-		-0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, // Top left
-		-0.5f, -0.5f, 0.0f,	0.0f, 1.0f, 0.0f, 1.0f, 1.0f, // Bottom left
-		 0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f  // Bottom right
-	};
-
 	
 	// Add data to buffer and set vertex attributes
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (bufferSize * sizeof(float)), buffer, GL_STATIC_DRAW);
 
 	// Submit data in layout into openGL
 	for (size_t i{}; i < layout.Elements.size(); i++)

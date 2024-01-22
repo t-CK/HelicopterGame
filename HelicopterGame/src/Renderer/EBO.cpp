@@ -10,17 +10,12 @@ EBO::EBO()
 	Bind();
 }
 
-void EBO::AddBuffer()
+void EBO::AddBuffer(unsigned int* indexBuffer, unsigned int indexCount)
 {
-	unsigned int indecies[] = {
-		0, 1, 2,
-		2, 3, 0
-
-	};
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (indexCount * sizeof(unsigned int)), indexBuffer, GL_STATIC_DRAW);
 
-	m_Count += std::size(indecies);
+	m_Count += indexCount;
 }
 
 void EBO::Bind() const
