@@ -20,9 +20,6 @@ public:
 	virtual void Update() { }
 	void Render();
 
-	//float* GetVertecies() const { return m_Vertecies; }
-	//int* GetIndecies() const { return m_Indecies; }
-
 	~StaticMeshComponent();
 protected:
 	VAO m_VAO;

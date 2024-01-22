@@ -25,7 +25,6 @@ public:
 	// Render sprite at end of the frame
 	inline void Render() 
 	{
-		//m_Renderer->Submit(m_Layout, m_VAO, m_VBO, m_EBO);
 		m_Mesh.Render();
 
 		// Set transformations
