@@ -20,8 +20,8 @@ Helicopter::Helicopter(Renderer* renderer)
 
 	m_Shader.LoadShader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
 
-	m_Texture.Create("assets/sprites/ScreenChopper.png");
-	m_Texture.Bind();
+	m_Texture.AddTexture("assets/sprites/ScreenChopper.png");
+	m_Texture.Update();
 
 	m_Shader.SetInt("tex", 0);
 	m_Renderer = renderer;

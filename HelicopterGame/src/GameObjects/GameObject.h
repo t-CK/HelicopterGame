@@ -11,6 +11,7 @@
 #include "../Renderer/Texture.h"
 #include "../Renderer/Renderer.h"
 #include "../Components/StaticMeshComponent.h"
+#include "../Components/TextureComponent.h"
 
 // Base class for game objects
 class GameObject
@@ -41,7 +42,7 @@ public:
 
 		m_Shader.Bind();
 
-		m_Texture.Bind();
+		m_Texture.Update();
 	}
 
 	// Getters
@@ -55,14 +56,11 @@ protected:
 	glm::vec4 m_Rotation;
 	glm::vec4 m_Scale;
 
-//	VAO m_VAO;
-//	VBO m_VBO;
-//	EBO m_EBO;
 	VertexBufferLayout m_Layout;
 	Shader m_Shader;
-	Texture m_Texture;
 	Renderer* m_Renderer;
 
 	StaticMeshComponent m_Mesh;
+	TextureComponent m_Texture;
 };
 #endif // !GAME_OBJECT_H
