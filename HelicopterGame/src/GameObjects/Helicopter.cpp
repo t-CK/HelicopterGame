@@ -1,4 +1,5 @@
 #include "Helicopter.h"
+#include "../Components/StaticMeshComponent.h"
 
 Helicopter::Helicopter(Renderer* renderer)
 {
@@ -12,7 +13,6 @@ Helicopter::Helicopter(Renderer* renderer)
 	 unsigned int indecies[] = {
 		0, 1, 2,
 		2, 3, 0
-
 	};
 
 	m_Mesh.Init(m_Renderer);
