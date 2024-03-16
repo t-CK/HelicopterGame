@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\InputComponent.cpp" />
     <ClCompile Include="src\Components\StaticMeshComponent.cpp" />
     <ClCompile Include="src\Components\TextureComponent.cpp" />
     <ClCompile Include="src\GameObjects\Helicopter.cpp" />
@@ -34,10 +35,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\GameComponent.h" />
+    <ClInclude Include="src\Components\InputComponent.h" />
     <ClInclude Include="src\Components\StaticMeshComponent.h" />
     <ClInclude Include="src\Components\TextureComponent.h" />
     <ClInclude Include="src\GameObjects\GameObject.h" />
     <ClInclude Include="src\GameObjects\Helicopter.h" />
+    <ClInclude Include="src\GameObjects\MovingObject.h" />
     <ClInclude Include="src\Renderer\EBO.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\Renderer\shader.h" />

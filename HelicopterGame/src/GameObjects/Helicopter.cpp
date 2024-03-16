@@ -1,5 +1,6 @@
 #include "Helicopter.h"
 #include "../Components/StaticMeshComponent.h"
+#include "../Components/InputComponent.h"
 
 Helicopter::Helicopter(Renderer* renderer)
 {
@@ -15,8 +16,11 @@ Helicopter::Helicopter(Renderer* renderer)
 		2, 3, 0
 	};
 
+	// Initialize necessary components
+	m_Input = new InputComponent(this);
 	m_Mesh.Init(m_Renderer);
 	m_Mesh.AddMesh(vert, indecies, 8);
+	m_Input->Init(m_Renderer);
 
 	m_Shader.LoadShader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
 

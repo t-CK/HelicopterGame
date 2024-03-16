@@ -51,6 +51,9 @@
     <ClCompile Include="src\Components\TextureComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\InputComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -90,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\TextureComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\InputComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\MovingObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

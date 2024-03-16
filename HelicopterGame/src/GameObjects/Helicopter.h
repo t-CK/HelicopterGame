@@ -1,5 +1,6 @@
 #include "MovingObject.h"
 
+class InputComponent;
 class Helicopter :
 	public MovingObject
 {
@@ -11,4 +12,7 @@ public:
 
 	~Helicopter();
 private:
+	InputComponent* m_Input = nullptr;
+
+	friend class InputComponent;
 };
