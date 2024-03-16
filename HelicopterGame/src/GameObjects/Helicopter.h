@@ -1,18 +1,14 @@
-#include "GameObject.h"
+#include "MovingObject.h"
 
 class Helicopter :
-	public GameObject
+	public MovingObject
 {
 public:
 	Helicopter(Renderer* renderer);
 
 	virtual void Tick(float deltaTime) override;
 
-	void MoveH(float value);
-	void MoveV(float value);
 
 	~Helicopter();
 private:
-	float m_SpeedH;
-	float m_SpeedV;
 };

@@ -31,14 +31,6 @@ void Helicopter::Tick(float deltaTime)
 {
 }
 
-void Helicopter::MoveH(float value)
-{
-}
-
-void Helicopter::MoveV(float value)
-{
-}
-
 Helicopter::~Helicopter()
 {
 }
