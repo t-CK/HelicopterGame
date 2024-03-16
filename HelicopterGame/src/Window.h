@@ -18,8 +18,11 @@ public:
 	bool GetClosed();
 
 	inline GLFWwindow* GetNativeWindow() const { return m_Wnd; }
+	inline static Window* Get() { return s_Window; }
 
 	~Window();
 private:
 	GLFWwindow* m_Wnd = nullptr;
+	// Make Window to static class
+	static Window* s_Window;
 };

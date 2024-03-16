@@ -3,8 +3,12 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+Window* Window::s_Window = nullptr;
+
 bool Window::Init()
 {
+	s_Window = this;
+
 	if (!glfwInit())
 	{
 		std::cout << "FATAL : Failed to initialize glfw" << std::endl;
