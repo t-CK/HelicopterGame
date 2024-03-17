@@ -7,10 +7,17 @@
 void InputComponent::Init(Renderer* renderer)
 {
 	bool inputPresent;
-	glfwSetKeyCallback(Window::Get()->GetNativeWindow(), [](GLFWwindow*, int key, int scancode, int action, int mod) {
-		(key == GLFW_KEY_SPACE && action == GLFW_PRESS) || (key == GLFW_KEY_SPACE && action == GLFW_REPEAT) ?
-			// DEBUG
-			// Test input
-			printf("input present\n") : printf("\n");
+	glfwSetWindowUserPointer(Window::Get()->GetNativeWindow(), static_cast<void*>(this));
+	glfwSetKeyCallback(Window::Get()->GetNativeWindow(), [](GLFWwindow* wnd, int key, int scancode, int action, int mod) {
+		auto comp = static_cast<InputComponent*>(glfwGetWindowUserPointer(wnd));
+		comp->HandleInput(key, action);
 		});
+}
+
+void InputComponent::HandleInput(int key, int action)
+{
+	(key == GLFW_KEY_SPACE && action == GLFW_PRESS) || (key == GLFW_KEY_SPACE && action == GLFW_REPEAT) ?
+		// DEBUG
+		// Test input
+		printf("input present\n") : printf("\n");
 }
