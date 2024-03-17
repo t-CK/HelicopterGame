@@ -51,6 +51,8 @@ public:
 	inline glm::vec4 GetRotation() const { return m_Rotation; }
 	inline glm::vec4 GetScale() const { return m_Scale; }
 
+	virtual ~GameObject() { delete m_Renderer; }
+
 protected:
 	glm::vec4 m_Location;
 	glm::vec4 m_Rotation;

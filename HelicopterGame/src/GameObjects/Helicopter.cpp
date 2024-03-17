@@ -37,4 +37,5 @@ void Helicopter::Tick(float deltaTime)
 
 Helicopter::~Helicopter()
 {
+	delete m_Input;
 }
