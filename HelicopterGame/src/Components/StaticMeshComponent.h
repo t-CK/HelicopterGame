@@ -28,7 +28,7 @@ public:
 
 	~StaticMeshComponent();
 
-private:
+public:
 	glm::vec3 m_Location;
 	glm::vec3 m_Rotation;
 	glm::vec3 m_Scale;
