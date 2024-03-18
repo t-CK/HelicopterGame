@@ -22,8 +22,8 @@ public:
 			m_Movement->Move(value * 0.01f, Axis::Y);
 	}
 protected:
-	float m_SpeedH = 0.005f;
-	float m_SpeedV = 0.005f;
+	float m_SpeedH = 0.001f;
+	float m_SpeedV = 0.001f;
 
 	MovementComponent* m_Movement;
 
