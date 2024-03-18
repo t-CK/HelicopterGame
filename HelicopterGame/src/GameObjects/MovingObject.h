@@ -21,6 +21,8 @@ public:
 		if ((m_Mesh.GetLocation().y <= 1.f) && (m_Mesh.GetLocation().y >= -1.f))
 			m_Movement->Move(value * 0.01f, Axis::Y);
 	}
+
+	virtual ~MovingObject() { delete m_Movement; }
 protected:
 	float m_SpeedH = 0.001f;
 	float m_SpeedV = 0.001f;
