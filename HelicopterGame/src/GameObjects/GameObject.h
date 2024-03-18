@@ -35,7 +35,7 @@ public:
 		u_Model = glm::scale(u_Model, m_Mesh.GetScale());
 
 		glm::mat4 u_View = glm::mat4(1.0f);
-		u_View = glm::translate(u_View, glm::vec3(-3.3f, 0.0f, -3.0f));
+		u_View = glm::translate(u_View, glm::vec3(-3.f, 0.0f, -3.0f));
 		glm::mat4 u_Projection;
 		u_Projection = glm::perspective(glm::radians(90.f), 800.0f / 600.0f, 0.1f, 100.0f);
 

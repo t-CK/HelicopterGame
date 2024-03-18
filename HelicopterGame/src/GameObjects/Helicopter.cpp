@@ -29,6 +29,10 @@ Helicopter::Helicopter(Renderer* renderer)
 
 	m_Shader.SetInt("tex", 0);
 	m_Renderer = renderer;
+
+	m_Mesh.m_Location.y = 0.f;
+	m_Mesh.m_Location.z = -0.5f;
+	m_Mesh.m_Location.x = -0.85f;
 }
 
 void Helicopter::Tick(float deltaTime)
