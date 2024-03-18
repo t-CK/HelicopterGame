@@ -1,6 +1,8 @@
 #ifndef STATIC_MESH_COMPONENT_H
 #define STATIC_MESH_COMPONENT_H
 
+#include <glm/glm.hpp>
+
 #include "GameComponent.h"
 #include "../Renderer/VAO.h"
 #include "../Renderer/VBO.h"
@@ -20,7 +22,17 @@ public:
 	virtual void Update() { }
 	void Render();
 
+	inline glm::vec3 GetLocation() const { return m_Location; }
+	inline glm::vec3 GetRotation() const { return m_Rotation; }
+	inline glm::vec3 GetScale() const { return m_Scale; }
+
 	~StaticMeshComponent();
+
+private:
+	glm::vec3 m_Location;
+	glm::vec3 m_Rotation;
+	glm::vec3 m_Scale;
+
 protected:
 	VAO m_VAO;
 	VBO m_VBO;

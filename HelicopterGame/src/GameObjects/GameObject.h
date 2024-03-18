@@ -30,6 +30,10 @@ public:
 
 		// Set transformations
 		glm::mat4 u_Model = glm::mat4(1.0f);
+		u_Model = glm::translate(u_Model, m_Mesh.GetLocation());
+		u_Model = glm::rotate(u_Model, glm::radians(m_Mesh.GetRotation().x), m_Mesh.GetRotation());
+		u_Model = glm::scale(u_Model, m_Mesh.GetScale());
+
 		glm::mat4 u_View = glm::mat4(1.0f);
 		u_View = glm::translate(u_View, glm::vec3(-3.3f, 0.0f, -3.0f));
 		glm::mat4 u_Projection;
@@ -45,19 +49,10 @@ public:
 		m_Texture.Update();
 	}
 
-	// Getters
-
-	inline glm::vec4 GetLocation() const { return m_Location; }
-	inline glm::vec4 GetRotation() const { return m_Rotation; }
-	inline glm::vec4 GetScale() const { return m_Scale; }
 
 	virtual ~GameObject() { delete m_Renderer; }
 
 protected:
-	glm::vec4 m_Location;
-	glm::vec4 m_Rotation;
-	glm::vec4 m_Scale;
-
 	VertexBufferLayout m_Layout;
 	Shader m_Shader;
 	Renderer* m_Renderer;

@@ -19,6 +19,9 @@ void StaticMeshComponent::AddMesh(float* vertexPos, unsigned int* indecies, unsi
 	m_EBO.Bind();
 	m_EBO.AddBuffer(indecies, indexCount);
 
+	m_Location = glm::vec3(1.f);
+	m_Rotation = glm::vec3(1.f);
+	m_Scale = glm::vec3(1.f);
 }
 
 void StaticMeshComponent::Render()
