@@ -21,6 +21,6 @@ void InputComponent::HandleInput(int key, int action)
 		if (action == GLFW_PRESS)
 			m_Owner->m_GoingUp = true;
 		else if (action == GLFW_RELEASE)
-			m_Owner->m_GoingUp == false;
+			m_Owner->m_GoingUp = false;
 	}
 }

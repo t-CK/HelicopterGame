@@ -12,11 +12,18 @@ class MovingObject :
 public:
 	MovingObject() { m_Movement = new MovementComponent(this); }
 
-	void MoveX(float value) { m_Movement->Move(value * m_SpeedH, Axis::X); }
-	void MoveY(float value) { m_Movement->Move(value * m_SpeedV, Axis::Y); }
+	void MoveX(float value)
+	{
+		
+	}
+	void MoveY(float value)
+	{
+		if ((m_Mesh.GetLocation().y <= 1.f) && (m_Mesh.GetLocation().y >= -1.f))
+			m_Movement->Move(value * 0.01f, Axis::Y);
+	}
 protected:
-	float m_SpeedH = 0.01f;
-	float m_SpeedV = 0.01f;
+	float m_SpeedH = 0.005f;
+	float m_SpeedV = 0.005f;
 
 	MovementComponent* m_Movement;
 
