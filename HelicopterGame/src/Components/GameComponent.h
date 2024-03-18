@@ -8,6 +8,7 @@ class GameComponent
 {
 public:
 	GameComponent() = default;
+	GameComponent(class GameObject*);
 
 	// Initialize component with reference to renderer
 	virtual void Init(class Renderer*) = 0;

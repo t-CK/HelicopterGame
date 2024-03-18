@@ -37,6 +37,7 @@ Helicopter::Helicopter(Renderer* renderer)
 
 void Helicopter::Tick(float deltaTime)
 {
+	m_GoingUp ? m_Movement->Move(m_SpeedV, Axis::Y) : m_Movement->Move(-m_SpeedV, Axis::Y);
 }
 
 Helicopter::~Helicopter()

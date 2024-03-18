@@ -9,8 +9,9 @@ public:
 
 	virtual void Tick(float deltaTime) override;
 
-
 	~Helicopter();
+private:
+	bool m_GoingUp = false;
 private:
 	InputComponent* m_Input = nullptr;
 
