@@ -12,6 +12,7 @@
 #include "../Renderer/Renderer.h"
 #include "../Components/StaticMeshComponent.h"
 #include "../Components/TextureComponent.h"
+#include "../Game.h"
 
 // Base class for game objects
 class GameObject
@@ -30,30 +31,33 @@ public:
 
 		// Set transformations
 		glm::mat4 u_Model = glm::mat4(1.0f);
-		u_Model = glm::translate(u_Model, m_Mesh.GetLocation());
-		u_Model = glm::rotate(u_Model, glm::radians(m_Mesh.GetRotation().x), m_Mesh.GetRotation());
-		u_Model = glm::scale(u_Model, m_Mesh.GetScale());
+//		u_Model = glm::translate(u_Model, m_Mesh.GetLocation());
+//		u_Model = glm::rotate(u_Model, glm::radians(m_Mesh.GetRotation().x), m_Mesh.GetRotation());
+//		u_Model = glm::scale(u_Model, m_Mesh.GetScale());
 
 		glm::mat4 u_View = glm::mat4(1.0f);
 		u_View = glm::translate(u_View, glm::vec3(-3.f, 0.0f, -3.0f));
-		glm::mat4 u_Projection;
-		u_Projection = glm::perspective(glm::radians(90.f), 800.0f / 600.0f, 0.1f, 100.0f);
+		//glm::mat4 u_Projection;
+		//u_Projection = glm::perspective(glm::radians(90.f), 800.0f / 600.0f, 0.1f, 100.0f);
 
 		// Submit transformations to shader
-		m_Shader.SetMat4("u_Model", u_Model);
-		m_Shader.SetMat4("u_View", u_View);
-		m_Shader.SetMat4("u_Projection", u_Projection);
+//		m_Shader.SetMat4("u_Model", u_Model);
+//		m_Shader.SetMat4("u_View", u_View);
+//		m_Shader.SetMat4("u_Projection", u_Projection);
 
 		m_Shader.Bind();
 
 		m_Texture.Update();
 	}
 
+	glm::vec3 GetPos() { return m_Mesh.GetLocation(); }
+
+	virtual void UpdateComponents() = 0;
 
 	virtual ~GameObject() { delete m_Renderer; }
 
 protected:
-	VertexBufferLayout m_Layout;
+
 	Shader m_Shader;
 	Renderer* m_Renderer;
 

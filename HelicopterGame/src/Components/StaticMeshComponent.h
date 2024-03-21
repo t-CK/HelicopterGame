@@ -19,12 +19,19 @@ public:
 
 	// Add 2d plane into game world
 	void AddMesh(float* vertexPos, unsigned int* indecies, unsigned int indexCount);
-	virtual void Update() { }
+
+	void SetRotation(glm::vec3 rot);
+	void SetLocation(glm::vec3 loc);
+	void SetScale(glm::vec3 s);
+
+	virtual void Update();
 	void Render();
 
 	inline glm::vec3 GetLocation() const { return m_Location; }
 	inline glm::vec3 GetRotation() const { return m_Rotation; }
 	inline glm::vec3 GetScale() const { return m_Scale; }
+
+	inline glm::mat4 GetModel() const { return u_Model; }
 
 	~StaticMeshComponent();
 
@@ -32,6 +39,7 @@ public:
 	glm::vec3 m_Location;
 	glm::vec3 m_Rotation;
 	glm::vec3 m_Scale;
+	glm::mat4 u_Model;
 
 protected:
 	VAO m_VAO;

@@ -2,19 +2,18 @@
 #define RENDERER_H
 
 
-
 namespace RendererFunc
 {
 	static void SetClearColor();
 	static void RenderClear();
-	static void SwapBuffers(GLFWwindow* wnd);
+	static void SwapBuffers();
 }
 
 class Window;
 class Renderer
 {
 public:
-	Renderer(Window* wnd);
+	Renderer();
 
 	static void BeginScene();
 	static void Submit(class VertexBufferLayout&, class VAO&, class VBO&, class EBO& ebo);

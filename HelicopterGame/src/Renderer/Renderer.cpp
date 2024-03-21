@@ -16,12 +16,12 @@ namespace RendererFunc
 {
 	void SetClearColor() { glClearColor(0.5f, 0.2f, 0.4f, 1.0f); }
 	void RenderClear() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
-	void SwapBuffers(GLFWwindow* wnd) { glfwSwapBuffers(wnd); }
+	void SwapBuffers() { glfwSwapBuffers(Window::Get()->GetNativeWindow()); }
 }
 
-Renderer::Renderer(Window* wnd) :
-	m_Window(wnd)
+Renderer::Renderer()
 {
+	m_Window = Window::Get();
 	RendererFunc::SetClearColor();
 }
 
@@ -45,5 +45,5 @@ void Renderer::Submit(VertexBufferLayout& layout, VAO& vao, VBO&, EBO& ebo)
 
 void Renderer::EndScene()
 {
-	RendererFunc::SwapBuffers(m_Window->GetNativeWindow());
+	RendererFunc::SwapBuffers();
 }

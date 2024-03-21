@@ -2,11 +2,8 @@
 #define MOVEMENT_COMPONENT_H
 
 #include "GameComponent.h"
+#include "../Preset/preset.h"
 
-enum Axis
-{
-	X = 1, Y = 2, Z = 3
-};
 
 class MovingObject;
 class MovementComponent :

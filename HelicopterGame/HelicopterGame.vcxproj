@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Components\CameraComponent.cpp" />
     <ClCompile Include="src\Components\InputComponent.cpp" />
     <ClCompile Include="src\Components\MovementComponent.cpp" />
     <ClCompile Include="src\Components\StaticMeshComponent.cpp" />
     <ClCompile Include="src\Components\TextureComponent.cpp" />
+    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameObjects\Helicopter.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
@@ -35,14 +38,18 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Components\CameraComponent.h" />
     <ClInclude Include="src\Components\GameComponent.h" />
     <ClInclude Include="src\Components\InputComponent.h" />
     <ClInclude Include="src\Components\MovementComponent.h" />
     <ClInclude Include="src\Components\StaticMeshComponent.h" />
     <ClInclude Include="src\Components\TextureComponent.h" />
+    <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameObjects\GameObject.h" />
     <ClInclude Include="src\GameObjects\Helicopter.h" />
     <ClInclude Include="src\GameObjects\MovingObject.h" />
+    <ClInclude Include="src\Preset\preset.h" />
     <ClInclude Include="src\Renderer\EBO.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\Renderer\shader.h" />
@@ -144,7 +151,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
@@ -159,7 +166,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>

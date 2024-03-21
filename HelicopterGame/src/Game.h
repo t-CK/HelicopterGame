@@ -15,8 +15,8 @@ public:
 
 	// Update the game, Camera and GameObjects
 	void Update();
-	static Game* Get() { return s_Game; }
 
+	static Game* Get() { return s_Game; }
 	float GetDeltaTime() const { return m_DeltaTime; }
 	Camera* GetCamera() const { return m_Camera; }
 	Renderer* GetRenderer() const { return m_Renderer; }
@@ -27,12 +27,14 @@ private:
 	void AddObject();
 	void RemoveObject();
 private:
-	float m_DeltaTime;
+	float m_DeltaTime = 0.f;
 
 	std::vector<GameObject*> m_Objects;
-//	Camera* m_Camera;
+	Camera* m_Camera;
 	Renderer* m_Renderer;
 	Window* m_Window;
+
+	class Helicopter* m_Helicopter = nullptr;
 
 	// We need only one game running at time, so make Game a static class
 	static Game* s_Game;
