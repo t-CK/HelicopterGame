@@ -14,7 +14,7 @@ class Window;
 class Renderer
 {
 public:
-	Renderer(Window* wnd);
+	Renderer();
 
 	static void BeginScene();
 	static void Submit(class VertexBufferLayout&, class VAO&, class VBO&, class EBO& ebo);

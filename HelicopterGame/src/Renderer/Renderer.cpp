@@ -19,8 +19,8 @@ namespace RendererFunc
 	void SwapBuffers(GLFWwindow* wnd) { glfwSwapBuffers(wnd); }
 }
 
-Renderer::Renderer(Window* wnd) :
-	m_Window(wnd)
+Renderer::Renderer() :
+	m_Window(Window::Get())
 {
 	RendererFunc::SetClearColor();
 }
