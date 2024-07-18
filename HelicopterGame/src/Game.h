@@ -1,5 +1,9 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include <vector>
 #include <memory>
+#include <glm/glm.hpp>
 
 class GameObject;
 
@@ -44,4 +48,19 @@ private:
 	class Window* m_Wnd;
 	// We only need one instance of game at a time, so make Game into static class
 	static Game* s_Game;
+
+public:
+	// Camera
+	glm::mat4 GetView() { return m_View; }
+	glm::mat4 GetProjection() { return m_Projection; }
+private:
+	glm::vec3 m_CameraRight;
+	glm::vec3 m_CameraUp;
+	glm::vec3 m_CameraForward;
+
+	glm::mat4 m_View;
+	glm::vec3 m_CamPos;
+
+	glm::mat4 m_Projection;
 };
+#endif // !GAME_H
