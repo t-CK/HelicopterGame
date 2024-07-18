@@ -20,6 +20,7 @@ Helicopter::Helicopter(Renderer* renderer)
 	m_Input = new InputComponent(this);
 	m_Mesh.Init(m_Renderer);
 	m_Mesh.AddMesh(vert, indecies, 8, 1);
+	m_Mesh.SetLocation(glm::vec3(-0.85f, 0.f, -3.f));
 	m_Input->Init(m_Renderer);
 
 	m_Shader.LoadShader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
@@ -29,10 +30,6 @@ Helicopter::Helicopter(Renderer* renderer)
 
 	m_Shader.SetInt("tex", 0);
 	m_Renderer = renderer;
-
-	m_Mesh.m_Location.y = 0.f;
-	m_Mesh.m_Location.z = -3.f;
-	m_Mesh.m_Location.x = -0.85f;
 }
 
 void Helicopter::Tick(float deltaTime)

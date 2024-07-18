@@ -30,6 +30,8 @@ public:
 	inline glm::vec3 GetUpVector()		const { return m_Up; }
 	inline glm::vec3 GetRightVector()	const { return m_Right; }
 
+	inline void SetLocation(glm::vec3 newPos) { m_Location = newPos; }
+
 	~StaticMeshComponent();
 
 public:
