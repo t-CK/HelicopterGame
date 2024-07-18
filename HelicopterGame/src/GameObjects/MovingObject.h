@@ -15,7 +15,7 @@ public:
 
 	virtual ~MovingObject() { delete m_Movement; }
 protected:
-	float m_SpeedH = 0.001f;
+	float m_SpeedH; // Horizontal speed variable will be set in derived class constructor
 	float m_SpeedV = 0.001f;
 
 	MovementComponent* m_Movement;
