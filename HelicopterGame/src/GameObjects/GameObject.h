@@ -38,12 +38,6 @@ public:
 
 		// Get the Camera pointer from Game
 		Camera* cam = Game::Get()->GetCamera();
-//		glm::mat4 u_View = glm::mat4(1.0f);
-//		u_View = glm::translate(u_View, glm::vec3(-3.f, 0.0f, -3.0f));
-//		glm::mat4 u_Projection;
-//		u_Projection = glm::perspective(glm::radians(90.f), 800.0f / 600.0f, 0.1f, 100.0f);
-
-//		glm::mat4 uProjection = Game::Get()->GetProjection();
 
 		// Submit transformations to shader
 		m_Shader.SetMat4("u_Model", u_Model);
