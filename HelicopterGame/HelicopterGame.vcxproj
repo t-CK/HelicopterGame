@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Components\InputComponent.cpp" />
     <ClCompile Include="src\Components\MovementComponent.cpp" />
     <ClCompile Include="src\Components\StaticMeshComponent.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Components\GameComponent.h" />
     <ClInclude Include="src\Components\InputComponent.h" />
     <ClInclude Include="src\Components\MovementComponent.h" />
