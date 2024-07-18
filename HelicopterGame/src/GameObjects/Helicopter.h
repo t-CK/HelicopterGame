@@ -12,7 +12,6 @@ public:
 	~Helicopter();
 private:
 	bool m_GoingUp = false;
-	const float m_MovementSpeed = 5.f;
 private:
 	InputComponent* m_Input = nullptr;
 
