@@ -19,7 +19,7 @@ Helicopter::Helicopter(Renderer* renderer)
 	// Initialize necessary components
 	m_Input = new InputComponent(this);
 	m_Mesh.Init(m_Renderer);
-	m_Mesh.AddMesh(vert, indecies, 8);
+	m_Mesh.AddMesh(vert, indecies, 8, 1);
 	m_Input->Init(m_Renderer);
 
 	m_Shader.LoadShader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");

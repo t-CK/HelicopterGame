@@ -18,7 +18,7 @@ public:
 	inline virtual void Init(class Renderer* renderer) override { m_Renderer = renderer; }
 
 	// Add 2d plane into game world
-	void AddMesh(float* vertexPos, unsigned int* indecies, unsigned int indexCount);
+	void AddMesh(float* vertexPos, unsigned int* indecies, unsigned int indexCount, bool faceRight);
 	virtual void Update() { }
 	void Render();
 
@@ -26,12 +26,20 @@ public:
 	inline glm::vec3 GetRotation() const { return m_Rotation; }
 	inline glm::vec3 GetScale() const { return m_Scale; }
 
+	inline glm::vec3 GetForwardVector() const { return m_Forward; }
+	inline glm::vec3 GetUpVector()		const { return m_Up; }
+	inline glm::vec3 GetRightVector()	const { return m_Right; }
+
 	~StaticMeshComponent();
 
 public:
 	glm::vec3 m_Location;
 	glm::vec3 m_Rotation;
 	glm::vec3 m_Scale;
+
+	glm::vec3 m_Forward;
+	glm::vec3 m_Right;
+	glm::vec3 m_Up;
 
 protected:
 	VAO m_VAO;

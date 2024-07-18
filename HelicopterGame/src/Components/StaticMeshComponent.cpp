@@ -5,7 +5,7 @@ StaticMeshComponent::StaticMeshComponent()
 	m_Name = "Static mesh component";
 }
 
-void StaticMeshComponent::AddMesh(float* vertexPos, unsigned int* indecies, unsigned int indexCount)
+void StaticMeshComponent::AddMesh(float* vertexPos, unsigned int* indecies, unsigned int indexCount, bool faceRight)
 {
 	m_VAO.Bind();
 
@@ -19,6 +19,12 @@ void StaticMeshComponent::AddMesh(float* vertexPos, unsigned int* indecies, unsi
 	m_EBO.Bind();
 	m_EBO.AddBuffer(indecies, indexCount);
 
+	// Set vectors
+	m_Right = faceRight ? glm::vec3(1.f, 0.f, 0.f) : glm::vec3(-1.f, 0.f, 0.f);
+	m_Up = glm::vec3(0.f, 1.f, 0.f);
+	m_Forward = glm::vec3(0.f, 0.f, 1.f);
+
+	// Set transforms
 	m_Location = glm::vec3(1.f);
 	m_Rotation = glm::vec3(1.f);
 	m_Scale = glm::vec3(1.f);

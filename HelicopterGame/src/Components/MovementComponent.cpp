@@ -12,9 +12,9 @@ void MovementComponent::Move(float value, Axis axis)
 {
 	switch (axis)
 	{
-	case X: { m_Owner->m_Mesh.m_Location.x += value; break; }
-	case Y: { m_Owner->m_Mesh.m_Location.y += value; break; }
-	case Z: { m_Owner->m_Mesh.m_Location.z += value; break; }
+	case X: { m_Owner->m_Mesh.m_Location += m_Owner->m_Mesh.GetRightVector() * value; break; }
+	case Y: { m_Owner->m_Mesh.m_Location += m_Owner->m_Mesh.GetUpVector() * value; break; }
+	case Z: { m_Owner->m_Mesh.m_Location += m_Owner->m_Mesh.GetForwardVector() * value; break; }
 	}
 }
 
