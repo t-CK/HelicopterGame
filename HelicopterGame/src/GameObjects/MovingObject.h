@@ -12,15 +12,6 @@ class MovingObject :
 public:
 	MovingObject() { m_Movement = new MovementComponent(this); }
 
-	void MoveX(float value)
-	{
-		
-	}
-	void MoveY(float value)
-	{
-		if ((m_Mesh.GetLocation().y <= 1.f) && (m_Mesh.GetLocation().y >= -1.f))
-			m_Movement->Move(value * 0.01f, Axis::Y);
-	}
 
 	virtual ~MovingObject() { delete m_Movement; }
 protected:
