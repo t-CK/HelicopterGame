@@ -20,7 +20,7 @@ Helicopter::Helicopter(Renderer* renderer)
 	m_Input = new InputComponent(this);
 	m_Mesh.Init(m_Renderer);
 	m_Mesh.AddMesh(vert, indecies, 8, 1);
-	m_Mesh.SetLocation(glm::vec3(-0.85f, 0.f, -3.f));
+	m_Mesh.SetLocation(glm::vec3(-0.85f, 0.f, -5.5f));
 	m_Input->Init(m_Renderer);
 
 	m_Shader.LoadShader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
